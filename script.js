@@ -71,27 +71,60 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-let arr = ['a', 'b', 'c', 'd', 'e'];
+// let arr = ['a', 'b', 'c', 'd', 'e'];
 
-console.log(arr.slice(2, 4));
-console.log(arr.slice(1, -2));
-console.log(arr.slice());
+// console.log(arr.slice(2, 4));
+// console.log(arr.slice(1, -2));
+// console.log(arr.slice());
 
-arr.splice(-1);
-console.log(arr.splice(1, 2));
-console.log(arr);
+// arr.splice(-1);
+// console.log(arr.splice(1, 2));
+// console.log(arr);
 
-arr = ['a', 'b', 'c', 'd', 'e'];
-const arr2 = ['j', 'i', 'h', 'g', 'f'];
-console.log(arr2.reverse());
-console.log(arr2);
+// arr = ['a', 'b', 'c', 'd', 'e'];
+// const arr2 = ['j', 'i', 'h', 'g', 'f'];
+// console.log(arr2.reverse());
+// console.log(arr2);
 
-const letters = arr.concat(arr2);
-console.log(letters);
-console.log([...arr, ...arr2]);
+// const letters = arr.concat(arr2);
+// console.log(letters);
+// console.log([...arr, ...arr2]);
 
-console.log(letters.join(' - '));
+// console.log(letters.join(' - '));
+
+// const arr3 = [23, 11, 64];
+
+// console.log(arr3[0]);
+// console.log(arr3.at(0));
+
+// getting the last element
+// console.log(arr3[arr3.length - 1]);
+// console.log(arr3.slice(-1)[0]);
+
+// console.log(arr3.at(-1));
+// at method also works with strings
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1} You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1} You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+// forEach is higher order function which needs callback function to know "what to do"
+// here it receves each movement as an argument
+movements.forEach(function (movement, i, a) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1} You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1} You withdrew ${Math.abs(movement)}`);
+  }
+});
+/// forEach method, order matters, first parameter is the current value, second is the index, last is the array. Above in for of loop, the first elemebt is the one is the index and second one is the current value
+// you cannot break from the forEach, if you need to break out- use for of loop.
