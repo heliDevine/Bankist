@@ -569,7 +569,7 @@ const { deposits, withdrawls } = accounts
     { deposits: 0, withdrawls: 0 }
   );
 
-console.log(deposits, withdrawls);
+// console.log(deposits, withdrawls);
 
 const convertTitleCase = function (title) {
   const capitalise = str => str[0].toUpperCase() + str.slice(1);
@@ -581,6 +581,52 @@ const convertTitleCase = function (title) {
     .join(' ');
   return capitalise(titleCase);
 };
-console.log(convertTitleCase('this is a nice title'));
-console.log(convertTitleCase('this is a LONG title with SOME CAPITALS'));
-console.log(convertTitleCase('and another example'));
+// console.log(convertTitleCase('this is a nice title'));
+// console.log(convertTitleCase('this is a LONG title with SOME CAPITALS'));
+// console.log(convertTitleCase('and another example'));
+
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+dogs.forEach(
+  dog => (dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28))
+);
+console.log(dogs);
+
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(dogSarah);
+console.log(
+  `Sarah's dog is eating too ${
+    dogSarah.curFood > dogSarah.recommendedFood ? 'much' : 'litte'
+  }`
+);
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooMuch);
+
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooLittle);
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
+
+const checkEatingOK = dog =>
+  dog.curFood > dog.recommendedFood * 0.9 &&
+  dog.curFood < dog.recommendedFood * 1.1;
+
+console.log(dogs.some(dog => dog.curFood === dog.recommendedFood));
+console.log(dogs.some(checkEatingOK));
+
+console.log(dogs.filter(checkEatingOK));
+
+const dogsCopy = dogs
+  .slice()
+  .sort((a, b) => a.recommendedFood - b.recommendedFood);
+
+console.log(dogsCopy);
